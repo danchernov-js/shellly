@@ -1,0 +1,185 @@
+      /* сброс стилей на дефолт чтобы во всех браузерах было одинаково*/
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /*чтобы бордер "рос" вовнутрь*/
+      }
+
+      body {
+        background-color: #e7f0f6;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 50px 15px;
+        padding-bottom: 189px;
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+      }
+
+      /*див, то что выделено пунктиром*/
+      #drop-area {
+        background-color: #fff;
+        border: 2px dashed #d0e3f8;
+        border-radius: 0 0 10px 10px;
+        min-height: calc(100vh - 364px); /*vh, vw - проценты высоты и ширины окна браузера */
+        padding: 30px;
+      }
+      #drop-area.highlight { 
+        /*класс добавляется через js к этому же диву для того, чтобы при наведении файлом
+        в эту зону, она подсвечивалась*/
+        border-color: #99d;
+      }
+      p { /*only text*/
+        display: block;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 300;
+        color: #333;
+        margin: 15px;
+      }
+      .my-form { /*форма для инпута файлов, работает и без тега форм*/
+        margin-bottom: 10px;
+      }
+      .button { /*класс применяемый на тег кнопки label*/
+        display: inline-block;
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: white;
+        padding: 20px 120px;
+        margin: 15px;
+        background-color: #d0e3f8;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        cursor: pointer;
+        transition: 100ms all ease-out;
+      }
+      .button:hover {
+        background-color: #667;
+        transition: 150ms all ease-out; /*чтобы более плавно менялся цвет*/
+      }
+
+      #inp { /*для инпута чтобы он не отображался, а отображался только label*/
+        display: none;
+      }
+
+      .download-bar { /*кнопка загрузки, можно заменить на ид*/
+        display: none;
+        background-color: #334;
+        position: fixed;
+        bottom: -160px;
+        /* margin: 0 -50px; */
+        border-radius: 20px 20px 0 0;
+        /* width: 100%; */
+        width: calc(100% - 100px); /*от родителя*/
+        transition: 1000ms all ease-out;
+      }
+
+      .download-bar-highlight { /*через js появляется для появления кнопки загрузки, можно сделать как дроареа*/
+        display: block;
+        bottom: 0;
+        transition: 1000ms all ease-out;
+      }
+
+      #download { /*кнопка скачки*/
+        display: inline-block;
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: white;
+        padding: 20px 120px;
+        margin: 50px;
+        background-color: #99d;
+        border: none;
+        border-radius: 10px;
+        outline: none; /*можно в звездочке прописать, это для убирания рамки при нажатии на кнопку и других инпутов и т.д.*/
+        cursor: pointer;
+        transition: 100ms all ease-out;
+      }
+
+      #download:hover {
+        background-color: #66a;
+        transition: 150ms all ease-out;
+      }
+
+      #card-container { /*общий контейнер для всех канвасов*/
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .card { /*контейнер для канвас и для названия картинки*/
+        display: block;
+        box-sizing: border-box;
+        width: calc(100% / 3 - 30px);
+        height: 300px;
+        margin: 15px;
+        overflow: hidden;
+        background-color: #fafafa;
+        border-radius: 10px;
+      }
+
+     .image-name { /*можно переписать, это нзавание картинки*/
+        font-size: 15px;
+        line-height: 20px;
+        color: #666;
+        margin: 0;
+      }
+
+      .logo { /*лого, буквы л прям в тегах прописаны*/
+        margin-top: -50px; /*переписать*/
+        font-family: "Montserrat", sans-serif;
+        font-size: 50px;
+        font-weight: 300;
+        line-height: 100px;
+        color: #333;
+      }
+
+      .browser-window { /*белое окно*/
+        border: 20px solid #fff;
+        background-color: #fff; 
+        border-radius: 20px;
+        box-shadow: 15px 15px 30px 0 rgba(186, 204, 227, 0.5),
+          -15px -15px 30px 0 rgba(255, 255, 255, 0.5); /*чекнуть, для нормальной прозрачности (8)*/
+      }
+
+      .browser-window-header { /*для точек (оформление)*/
+        height: 40px;
+        margin: -10px 0 5px;
+      }
+
+      .browser-window-header-left { /*упростить, недоделанная заготовка/можно удалить класс*/
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      .browser-window-header-left_circle-button { /*создание кружочков*/
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border: 1px solid;
+        border-radius: 6px;
+        margin: 4px;
+      }
+
+      .circle-red {
+        background-color: #fc615d;
+        border-color: #df4845;
+      }
+
+      .circle-yellow {
+        background-color: #fdbd41;
+        border-color: #dea034;
+      }
+
+      .circle-green {
+        background-color: #34c84a;
+        border-color: #28ab35;
+      }
