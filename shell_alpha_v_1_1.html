@@ -35,7 +35,7 @@
           <input
             type="file"
             id="inp"
-            multiple
+            multiple 
             accept="image/*"
             onchange="handleFiles(this.files)"
           />
@@ -48,19 +48,25 @@
     <div class="download-bar" id="download-bar"> <!-- кнопка загрузки результата -->
       <button id="download">Download</button>
     </div>
+    <!-- упаковываем все картинки в зип файл -->
     <script src="/jszip-utils-master/dist/jszip-utils.js"></script>
     <script src="/jszip-master/dist/jszip.min.js"></script>
     <script src="/jszip-master/vendor/FileSaver.js"></script>
     <script>
-      window.ondragover = function(e) {e.preventDefault()}
+      // при наведении файлом на область - сбрасываем стандартные события браузера, 
+      // которые должны происходить при этом наведении, возможно лишнее
+      window.ondragover = function(e) {e.preventDefault()} 
+      //при сбросе (отпускании клавиши мыши) снова сбрасываем стандартное поведение браузера
+      //чекнуть
       window.ondrop = function (e) {
         e.preventDefault();
         prepareFiles(e.dataTransfer.files);
       };
+      //обработчик для инпута, разобраться как их у меня два оказалось
       document.getElementById("inp").onchange = function (e) {
         prepareFiles(this.files);
       };
-
+      //слушаю событие вставить и обработчик, фолс еще чекнуть - можно удалить
       window.addEventListener(
         "paste",
         function (e) {
@@ -97,18 +103,19 @@
       }
 
       const onlyimg = [];
-      const imageArr = [];
-      const imageDownArr = [];
-      const sameName = [];
+      const imageArr = []; //собирается из тех же файлов, с исходными картинками, чтобы в дальнейшем
+      //использовать в канвасе
+      const imageDownArr = []; //собирается из файлов которые готовы к скачке (ссылка и имя)
+      const sameName = []; //не используется по сути
 
+
+     // чекнуть, должна складывать название и каунтер, вероятно можно удалить
       function collectSameNames(nameValue, matchCounter) {
         return {
           xname: nameValue,
           xnumber: matchCounter,
         };
       }
-
-      console.log(imageArr);
 
       function prepareFiles(files) {
         files = [...files];
@@ -118,9 +125,10 @@
         imageArr.length = 0;
       }
 
-      var i = 0;
-      var k = 1;
+      var i = 0; //уникальный айдишник для канвас для последующего взаимодействия
+      var k = 1; //счетчик который приписывается для уникального названия
 
+      //распихивает названия файла, айдишники, ссылки по массивам, сравния по названию, можно перензавать
       function drawe(file) {
         var img = new Image();
         if (imageDownArr.length == 0) {
@@ -136,6 +144,7 @@
             collectCanvasIdAndName("canvas-id-" + i, "", file.name)
           );
         } else {
+          //проверяем название без расширений на повтор
           let trueCheck = imageDownArr.find(
             (item) =>
               item.fname
@@ -143,6 +152,7 @@
                 .toLowerCase() ==
               file.name.substring(0, file.name.lastIndexOf(".")).toLowerCase()
           );
+          //если не повторяется, то все ок - добавляем
           if (trueCheck == undefined) {
             imageArr.push(
               collectCanvasIdAndName(
@@ -155,6 +165,7 @@
               collectCanvasIdAndName("canvas-id-" + i, "", file.name)
             );
           } else {
+            //сеймнейм пока не работает, можно удалить
             sameName.push(
               collectSameNames(
                 file.name
@@ -163,6 +174,7 @@
                 1
               )
             );
+            //добавляем в название каунтер к, переделать
             imageArr.push(
               collectCanvasIdAndName(
                 "canvas-id-" + i,
