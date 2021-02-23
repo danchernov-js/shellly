@@ -474,12 +474,6 @@
                     data,
                     { binary: true }
                   );
-                  // downloadProgress.style.background =
-                  //   "linear-gradient(to right, #0f0 " +
-                  //   (100 / imageDownArr.length) * (count + 1) +
-                  //   "%, #eee " +
-                  //   (100 / imageDownArr.length) * (count + 1) +
-                  //   "%)";
                   count++;
                   if (count == imageDownArr.length) {
                     zip.generateAsync({ type: "blob" }).then(function (content) {
@@ -491,12 +485,6 @@
                         downloadProgress.innerHTML = "download";
                         downloadProgress.disabled = false;
                       });
-                    // async function doMagic() {
-                    //   let blob = await zip.generateAsync({type: blob()});
-                    //   saveAs(blob, `macshell-${timestamp}.zip`);
-                    //   count = 0;
-                    //   onlyimg.length = 0;
-                    // }
                   }
                 });
               });

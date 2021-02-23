@@ -8,9 +8,9 @@
 
       body {
         background-color: #e7f0f6;
-        max-width: 1600px;
+        max-width: 1000px;
         margin: 0 auto;
-        padding: 50px 15px;
+        padding: 0px 15px;
         padding-bottom: 189px;
       }
 
@@ -19,13 +19,12 @@
         width: 100%;
       }
 
-      /*див, то что выделено пунктиром*/
       #drop-area {
         background-color: #fff;
-        border: 2px dashed #d0e3f8;
-        border-radius: 0 0 10px 10px;
+        border: 1.5px dashed #d0e3f8;
+        border-radius: 10px;
         min-height: calc(100vh - 364px); /*vh, vw - проценты высоты и ширины окна браузера */
-        padding: 30px;
+        padding: 15px;
       }
       #drop-area.highlight { 
         /*класс добавляется через js к этому же диву для того, чтобы при наведении файлом
@@ -71,14 +70,12 @@
 
       .download-bar { /*кнопка загрузки, можно заменить на ид*/
         display: none;
-        background-color: #334;
+        /* background-color: #334;
         position: fixed;
         bottom: -160px;
-        /* margin: 0 -50px; */
         border-radius: 20px 20px 0 0;
-        /* width: 100%; */
         width: calc(100% - 100px); /*от родителя*/
-        transition: 1000ms all ease-out;
+        /*transition: 1000ms all ease-out; */
       }
 
       .download-bar-highlight { /*через js появляется для появления кнопки загрузки, можно сделать как дроареа*/
@@ -133,7 +130,7 @@
       }
 
       .logo { /*лого, буквы л прям в тегах прописаны*/
-        margin-top: -50px; /*переписать*/
+        text-decoration: none;
         font-family: "Montserrat", sans-serif;
         font-size: 50px;
         font-weight: 300;

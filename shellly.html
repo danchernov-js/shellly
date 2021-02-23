@@ -7,11 +7,11 @@
   </head>
 
   <body>
-    <div class="logo">
+    <a class="logo" href="shellly.html">
       She<span style="color: #fc615d">l</span
       ><span style="color: #fdbd41">l</span
       ><span style="color: #34c84a">l</span>y
-    </div>
+    </a>
     <div class="browser-window">
       <div class="browser-window-header">
         <div class="browser-window-header-left">
@@ -42,17 +42,16 @@
           <label class="button" for="inp"> Выбрать изображения </label>
         </form>
         <div id="card-container"></div>
-      </div>
+      </div>     
+      <div class="download-bar" id="download-bar">
+       <button id="download">Загрузить</button>
+     </div>
     </div>
+    
 
-    <div class="download-bar" id="download-bar">
-      <!-- кнопка загрузки результата -->
-      <button id="download">Download</button>
-    </div>
-    <!-- упаковываем все картинки в зип файл -->
     <script src="/jszip-utils-master/dist/jszip-utils.js"></script>
     <script src="/jszip-master/dist/jszip.min.js"></script>
     <script src="/jszip-master/vendor/FileSaver.js"></script>
-    <script src="test.js"></script>
+    <script src="shellly.js"></script>
   </body>
 </html>
