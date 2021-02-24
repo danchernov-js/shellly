@@ -4,6 +4,8 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box; /*чтобы бордер "рос" вовнутрь*/
+        outline: none; /*это для убирания рамки при нажатии на кнопку и других инпутов и т.д.*/
+
       }
 
       body {
@@ -31,7 +33,7 @@
         в эту зону, она подсвечивалась*/
         border-color: #99d;
       }
-      p { /*only text*/
+      p { 
         display: block;
         font-family: 'Montserrat', sans-serif;
         font-size: 20px;
@@ -68,14 +70,8 @@
         display: none;
       }
 
-      .download-bar { /*кнопка загрузки, можно заменить на ид*/
+      .download-bar { 
         display: none;
-        /* background-color: #334;
-        position: fixed;
-        bottom: -160px;
-        border-radius: 20px 20px 0 0;
-        width: calc(100% - 100px); /*от родителя*/
-        /*transition: 1000ms all ease-out; */
       }
 
       .download-bar-highlight { /*через js появляется для появления кнопки загрузки, можно сделать как дроареа*/
@@ -84,7 +80,7 @@
         transition: 1000ms all ease-out;
       }
 
-      #download { /*кнопка скачки*/
+      #download { 
         display: inline-block;
         font-family: "Montserrat", sans-serif;
         font-size: 16px;
@@ -92,11 +88,10 @@
         font-weight: 500;
         color: white;
         padding: 20px 120px;
-        margin: 50px;
+        margin: 30px;
         background-color: #99d;
         border: none;
         border-radius: 10px;
-        outline: none; /*можно в звездочке прописать, это для убирания рамки при нажатии на кнопку и других инпутов и т.д.*/
         cursor: pointer;
         transition: 100ms all ease-out;
       }

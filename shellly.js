@@ -198,12 +198,6 @@
           gCanvas.width = item.img.width + x * 2;
           gCanvas.height = item.img.height + y * 4 + barH;
 
-          //Gradient example
-          // var barGrd = gCtx.createLinearGradient(0, 0, 0, barH);
-          // barGrd.addColorStop(0,"rgb(230,230,230)");
-          // barGrd.addColorStop(1,"rgb(220,220,220)");
-          // gCtx.fillStyle = barGrd;
-
           //Browser window shadow; 
           gCtx.globalAlpha = 0.2; //прозрачноть 20%
           gCtx.shadowColor = "black";
@@ -359,14 +353,6 @@
             false
           );
           gCtx.clip();
-          // /// draw the shape we want to use for clipping
-          // roundRect.drawImage(gCtx, 10, 60, this.width, this.height, {bl: 20, br: 20}, true, false);
-          // /// change composite mode to use that shape
-          // gCtx.globalCompositeOperation = 'source-in';
-          //
-          // /// draw the image to be clipped
-          // gCtx.drawImage(this, 10,60);
-          // roundRect(gCtx.drawImage, 10, 60, this.width, this.height, {bl: 20, br: 20}, true, false);
           gCtx.drawImage(item.img, x, y + barH);
           gCtx.strokeStyle = "rgb(201,201,201)"; //цвет обводки
           roundRect(
@@ -435,7 +421,7 @@
         //скачивает картинку или архив с несколькими картинками
         var downloadProgress = document.getElementById("download");
         downloadProgress.disabled = true;
-        downloadProgress.innerHTML = "downloading...";
+        downloadProgress.innerHTML = "Загрузка...";
 
         //в первый масссив ссылку на исходную картинку записывали, чтобы потом
         //из него брать эти картинки по одной и обрамлять в макОС, а во второй массив будем сейчас записывать 
@@ -482,7 +468,7 @@
                         count = 0; // не нужен
                         onlyimg.length = 0;
                         downloadProgress.style.background = "#ff0000";
-                        downloadProgress.innerHTML = "download";
+                        downloadProgress.innerHTML = "Загрузить ещё";
                         downloadProgress.disabled = false;
                       });
                   }
@@ -494,7 +480,7 @@
               a.click();
               onlyimg.length = 0;
               downloadProgress.disabled = false;
-              downloadProgress.innerHTML = "download";
+              downloadProgress.innerHTML = "Загрузить ещё";
             }
 
             a.remove();
