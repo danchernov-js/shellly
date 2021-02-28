@@ -1,13 +1,27 @@
-      // при наведении файлом на область - сбрасываем стандартные события браузера,
+      function include(url) {
+        var script = document.createElement('script');
+        script.src = url;
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+     
+    include("jszip-utils-master/dist/jszip-utils.js");
+    include("jszip-master/dist/jszip.min.js");
+    include("jszip-master/vendor/FileSaver.js");
+  
+     
+     
+     // при наведении файлом на область - сбрасываем стандартные события браузера,
       // которые должны происходить при этом наведении, возможно лишнее
-      window.ondragover = function (e) {
-        e.preventDefault();
-      };
+      // window.ondragover = function (e) {
+      //   e.preventDefault();
+      // };
+
+      
       //при сбросе (отпускании клавиши мыши) снова сбрасываем стандартное поведение браузера
       //чекнуть
-      window.ondrop = function (e) {
-        e.preventDefault();
-        prepareFiles(e.dataTransfer.files);
+      window.ondrop = function (event) {
+        event.preventDefault();
+        prepareFiles(event.dataTransfer.files);
       };
       //обработчик для инпута, разобраться как их у меня два оказалось
       document.getElementById("inp").onchange = function (e) {
@@ -435,7 +449,7 @@
             document.body.append(a); //добавляет тег а последним в бади
             a.download = //download - атрибут для того, чтобы не переходить по ссылке а сразу предложить 
             //скачать документ, содержащийся в ссылке
-              "картинка-" + item.fname.substring(0, item.fname.lastIndexOf(".")); //присвоить название итог.картинке
+              "MacPic-" + item.fname.substring(0, item.fname.lastIndexOf(".")); //присвоить название итог.картинке
               //расширение присваивается автоматически
             console.log(a.download);
             a.href = URL.createObjectURL(blob); //создать ссылку на итоговую картинку
@@ -475,7 +489,6 @@
                 });
               });
 
-              console.log("stop");
             } else {
               a.click();
               onlyimg.length = 0;
